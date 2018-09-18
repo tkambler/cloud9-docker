@@ -47,6 +47,10 @@ RUN apt-get update && apt-get install -y yarn
 RUN apt-get install -y -qq groff less
 RUN pip install awscli --upgrade --user
 
-ENTRYPOINT ["./cloud9/server.js", "--listen", "0.0.0.0", "--port", "80", "-w", "/root", "-b"]
+COPY launch_cloud9 /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/launch_cloud9
+
+ENTRYPOINT ["/usr/local/bin/launch_cloud9"]
 
 EXPOSE 80
