@@ -3,6 +3,13 @@
 const { spawn } = require('child_process');
 let cloud9;
 
+let workspace = false;
+process.argv.forEach((arg) => {
+	if (arg === '--workspace') {
+		workspace = true;
+	}
+});
+
 if (process.platform === 'win32') {
 
 	var rl = require('readline').createInterface({
@@ -27,7 +34,7 @@ cloud9 = spawn('node', [
 	'--port',
 	'80',
 	'-w',
-	'/root',
+	workspace ? '/root/workspace' : '/root',
 	'-b'
 ]);
 
