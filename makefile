@@ -1,5 +1,7 @@
+IMAGE=tkambler/cloud9
+
 all:
-	docker build -t tkambler/cloud9 .
+	docker build -t $(IMAGE) .
 
 clean:
-	docker rmi tkambler/cloud9
+	docker rmi $(IMAGE)
